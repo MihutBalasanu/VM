@@ -11,6 +11,7 @@ public class VendingMachine {
 
     private VMTypes vmType;
     private Map<Product, Integer> productStock;
+    private boolean wantToBuy = true;
 
     public VendingMachine(String filePath) {
         this.initialize(filePath);
@@ -31,20 +32,22 @@ public class VendingMachine {
         int option = scanner.nextInt();
         if(0 == option){
             System.out.println("Ati iesit din menu. Va mai asteptam!");
-        }
-        for(Product p: productStock.keySet()){
-            if(p.getCod() == option){
-               Integer quantity = productStock.get(p);
-               if(quantity > 0){
-                   productStock.put(p, quantity - 1);
-                   System.out.println("Produs cumparat cu succes!");
-               }
+            wantToBuy = false;
+        }else {
+            for (Product p : productStock.keySet()) {
+                if (p.getCod() == option) {
+                    Integer quantity = productStock.get(p);
+                    if (quantity > 0) {
+                        productStock.put(p, quantity - 1);
+                        System.out.println("Produs cumparat cu succes!");
+                    }
+                }
             }
         }
     }
 
     public void start(){
-        while(true) {
+        while(wantToBuy) {
             this.displayMenu();
             buyProduct();
         }
