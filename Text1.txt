@@ -1,0 +1,7 @@
+COFFEE
+lei
+1 10
+5 5
+10 3
+cafea 3 100 10
+ceai 2 200 5
