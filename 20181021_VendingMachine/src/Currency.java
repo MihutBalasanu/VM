@@ -1,3 +1,3 @@
 public enum Currency {
-    lei, euro
+    RON, EURO
 }
